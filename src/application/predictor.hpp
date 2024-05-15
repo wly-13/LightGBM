@@ -162,6 +162,7 @@ class Predictor {
   * \param result_filename Filename of output result
   */
   void Predict(const char* data_filename, const char* result_filename, bool header, bool disable_shape_check, bool precise_float_parser) {
+    Common::FunctionTimer fun_timer("Predict", global_timer);
     auto writer = VirtualFileWriter::Make(result_filename);
     if (!writer->Init()) {
       Log::Fatal("Prediction results file %s cannot be created", result_filename);

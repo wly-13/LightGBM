@@ -419,6 +419,7 @@ bool GBDT::SaveModelToFile(int start_iteration, int num_iteration, int feature_i
 }
 
 bool GBDT::LoadModelFromString(const char* buffer, size_t len) {
+  Common::FunctionTimer fun_timer("GBDT::LoadModelFromString", global_timer);
   // use serialized string to restore this object
   models_.clear();
   auto c_str = buffer;
